@@ -1,131 +1,131 @@
 ***ENTIDADES PRINCIPALES***
 1. **Producto**
     
-    id_producto (PK)
+    - id_producto (PK)
 
-    nombre
+    - nombre
 
-    descripcion
+    - descripcion
 
-    precio
+    - precio
 
-    id_categoria (FK)
+    - id_categoria (FK)
 
-    activo (bool: si está disponible)
+    - activo (bool: si está disponible)
 
 2. **CategoríaProducto**
     
-    id_categoria (PK)
+    - id_categoria (PK)
 
-    nombre_categoria (ej. bebidas, entradas, postres)
+    - nombre_categoria (ej. bebidas, entradas, postres)
 
 3. **Ingrediente**
     
-    id_ingrediente (PK)
+    - id_ingrediente (PK)
 
-    nombre
+    - nombre
 
-    stock_actual
+    - stock_actual
 
-    unidad_medida (g, ml, unidades, etc.)
+    - unidad_medida (g, ml, unidades, etc.)
 
 4. **ProductoIngrediente** *(relación muchos a muchos)*
     
-    id_producto (FK)
+    - id_producto (FK)
 
-    id_ingrediente (FK)
+    - id_ingrediente (FK)
 
-    cantidad_necesaria
+    - cantidad_necesaria
 
-5.**Pedido**
+5. **Pedido**
     
-    id_pedido (PK)
+    - id_pedido (PK)
 
-    fecha_hora
+    - fecha_hora
 
-    estado (pendiente, preparando, listo, entregado, cancelado)
+    - estado (pendiente, preparando, listo, entregado, cancelado)
 
-    id_cliente (FK, opcional)
+    - id_cliente (FK, opcional)
 
-    id_empleado (FK)
+    - id_empleado (FK)
 
-    total
+    - total
 
 6. **DetallePedido**
     
-    id_detalle (PK)
+    - id_detalle (PK)
 
-    id_pedido (FK)
+    - id_pedido (FK)
 
-    id_producto (FK)
+    - id_producto (FK)
 
-    cantidad
+    - cantidad
 
-    precio_unitario
+    - precio_unitario
 
-    subtotal
+    - subtotal
 
 7. **Cliente**
     
-    id_cliente (PK)
+    - id_cliente (PK)
 
-    nombre
+    - nombre
 
-    telefono
+    - telefono
 
-    direccion (si hay delivery)
+    - direccion (si hay delivery)
 
-    email (opcional)
+    - email (opcional)
 
 8. **Empleado**
     
-    id_empleado (PK)
+    - id_empleado (PK)
 
-    nombre
+    - nombre
 
-    rol (mesero, cocinero, administrador)
+    - rol (mesero, cocinero, administrador)
 
-    usuario
+    - usuario
 
-    contraseña (encriptada)
+    - contraseña (encriptada)
 
 9. **Reserva**
     
-    id_reserva (PK)
+    - id_reserva (PK)
 
-    fecha_hora
+    - fecha_hora
 
-    id_cliente (FK)
+    - id_cliente (FK)
 
-    cantidad_personas
+    - cantidad_personas
 
-    id_mesa (FK)
+    - id_mesa (FK)
 
-    estado (confirmada, cancelada)
+    - estado (confirmada, cancelada)
 
 10. **Mesa**
     
-    id_mesa (PK)
+    - id_mesa (PK)
 
-    numero
+    - numero
 
-    capacidad
+    - capacidad
 
-    estado_actual (libre, ocupada, reservada)
+    - estado_actual (libre, ocupada, reservada)
 
 11. **Pago**
     
-    id_pago (PK)
+    - id_pago (PK)
 
-    id_pedido (FK)
+    - id_pedido (FK)
 
-    monto_total
+    - monto_total
 
-    tipo_pago (efectivo, tarjeta, etc.)
+    - tipo_pago (efectivo, tarjeta, etc.)
 
-    propina
+    - propina
 
-    fecha_pago
+    - fecha_pago
 
 
 ***RELACIONES IMPORTANTES***
