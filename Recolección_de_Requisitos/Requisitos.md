@@ -1,9 +1,15 @@
 **1. Información general del negocio**
 ¿Qué tipo de restaurante es? (comida rápida, gourmet, autoservicio, delivery, etc.)
 
+Restaurante de comida típica, con platos a la carta
+
 ¿Se ofrecen servicios para llevar, entrega a domicilio o reservas?
 
+Si, todas las anteriores
+
 ¿Cuál es el flujo típico de atención? (cliente llega → pide → paga → recibe comida, etc.)
+
+cliente llega → recibe cortesía → pide → recibe pedido → paga → cliente se va
 
 **2. Menú y productos**
 ¿Cuáles son los productos que se venden? ¿Cómo se agrupan? (categorías: bebidas, platos, postres)
