@@ -1,5 +1,6 @@
 ***ENTIDADES PRINCIPALES***
 1. **Producto**
+    
     id_producto (PK)
 
     nombre
@@ -13,11 +14,13 @@
     activo (bool: si está disponible)
 
 2. **CategoríaProducto**
+    
     id_categoria (PK)
 
     nombre_categoria (ej. bebidas, entradas, postres)
 
 3. **Ingrediente**
+    
     id_ingrediente (PK)
 
     nombre
@@ -27,6 +30,7 @@
     unidad_medida (g, ml, unidades, etc.)
 
 4. **ProductoIngrediente** *(relación muchos a muchos)*
+    
     id_producto (FK)
 
     id_ingrediente (FK)
@@ -34,6 +38,7 @@
     cantidad_necesaria
 
 5.**Pedido**
+    
     id_pedido (PK)
 
     fecha_hora
@@ -47,6 +52,7 @@
     total
 
 6. **DetallePedido**
+    
     id_detalle (PK)
 
     id_pedido (FK)
@@ -60,6 +66,7 @@
     subtotal
 
 7. **Cliente**
+    
     id_cliente (PK)
 
     nombre
@@ -71,6 +78,7 @@
     email (opcional)
 
 8. **Empleado**
+    
     id_empleado (PK)
 
     nombre
@@ -82,6 +90,7 @@
     contraseña (encriptada)
 
 9. **Reserva**
+    
     id_reserva (PK)
 
     fecha_hora
@@ -95,6 +104,7 @@
     estado (confirmada, cancelada)
 
 10. **Mesa**
+    
     id_mesa (PK)
 
     numero
@@ -104,6 +114,7 @@
     estado_actual (libre, ocupada, reservada)
 
 11. **Pago**
+    
     id_pago (PK)
 
     id_pedido (FK)
@@ -118,6 +129,7 @@
 
 
 ***RELACIONES IMPORTANTES***
+    
     Un pedido puede tener múltiples productos (DetallePedido).
 
     Un producto puede tener múltiples ingredientes (ProductoIngrediente).
