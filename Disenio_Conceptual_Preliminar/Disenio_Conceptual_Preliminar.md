@@ -1,7 +1,9 @@
 ***ENTIDADES PRINCIPALES***
+
 **1. Producto**
-    -    id_producto (PK)
-    -    nombre
+
+    •   id_producto (PK)
+    •   nombre
     •	descripcion
     •	precio
     •	id_categoria (FK → CategoríaProducto)
