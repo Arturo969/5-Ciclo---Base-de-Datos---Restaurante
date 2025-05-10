@@ -1,5 +1,5 @@
 ***ENTIDADES PRINCIPALES***
-1. Producto
+**1. Producto**
     •	id_producto (PK)
     •	nombre
     •	descripcion
@@ -8,23 +8,23 @@
     •	activo (bool)
     •	foto_url
 
-2. CategoríaProducto
+**2. CategoríaProducto**
     •	id_categoria (PK)
     •	nombre_categoria (Ej: bebidas, entradas, postres)
 
-3. Ingrediente
+**3. Ingrediente**
     •	id_ingrediente (PK)
     •	nombre
     •	stock_actual
     •	unidad_medida (g, ml, unidades, etc.)
     •	activo (bool)
 
-4. ProductoIngrediente (Relación muchos a muchos)
+**4. ProductoIngrediente (Relación muchos a muchos)**
     •	id_producto (FK → Producto)
     •	id_ingrediente (FK → Ingrediente)
     •	cantidad_necesaria
 
-5. Pedido
+**5. Pedido**
     •	id_pedido (PK)
     •	fecha_hora
     •	estado (pendiente, preparando, listo, entregado, cancelado)
@@ -33,7 +33,7 @@
     •	origen (mesa, mostrador, mensaje, llamada)
     •	total
 
-6. DetallePedido
+**6. DetallePedido**
     •	id_detalle (PK)
     •	id_pedido (FK → Pedido)
     •	id_producto (FK → Producto)
@@ -41,7 +41,7 @@
     •	precio_unitario
     •	subtotal
 
-7. Cliente
+**7. Cliente**
     •	id_cliente (PK)
     •	nombre
     •	telefono
@@ -52,7 +52,7 @@
     •	acumulado_consumo (para cupones/promos)
     •	activo (bool)
 
-8. Empleado
+**8. Empleado**
     •	id_empleado (PK)
     •	nombre
     •	dni
@@ -64,7 +64,7 @@
     •	contrasena_hash
     •	activo (bool)
 
-9. Reserva
+**9. Reserva**
     •	id_reserva (PK)
     •	fecha_hora
     •	id_cliente (FK → Cliente)
@@ -72,13 +72,13 @@
     •	id_mesa (FK → Mesa)
     •	estado (confirmada, cancelada, atendida)
 
-10. Mesa
+**10. Mesa**
     •	id_mesa (PK)
     •	numero
     •	capacidad
     •	estado_actual (libre, ocupada, reservada)
 
-11. Pago
+**11. Pago**
     •	id_pago (PK)
     •	id_pedido (FK → Pedido)
     •	monto_total
@@ -87,7 +87,7 @@
     •	descuento_aplicado (opcional)
     •	impuestos
 
-12. CuponConsumo
+**12. CuponConsumo**
     •	id_cupon (PK)
     •	id_cliente (FK → Cliente)
     •	codigo
@@ -96,7 +96,7 @@
     •	fecha_vencimiento
     •	usado (bool)
 
-13. MovimientoInventario (opcional pero recomendado)
+**13. MovimientoInventario (opcional pero recomendado)**
     •	id_movimiento (PK)
     •	id_ingrediente (FK → Ingrediente)
     •	tipo (entrada, salida)
