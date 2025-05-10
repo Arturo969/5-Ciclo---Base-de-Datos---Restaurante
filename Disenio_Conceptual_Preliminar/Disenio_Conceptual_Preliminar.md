@@ -11,10 +11,12 @@
     •	foto_url
 
 **2. CategoríaProducto**
+
     •	id_categoria (PK)
     •	nombre_categoria (Ej: bebidas, entradas, postres)
 
 **3. Ingrediente**
+
     •	id_ingrediente (PK)
     •	nombre
     •	stock_actual
@@ -22,11 +24,13 @@
     •	activo (bool)
 
 **4. ProductoIngrediente (Relación muchos a muchos)**
+
     •	id_producto (FK → Producto)
     •	id_ingrediente (FK → Ingrediente)
     •	cantidad_necesaria
 
 **5. Pedido**
+
     •	id_pedido (PK)
     •	fecha_hora
     •	estado (pendiente, preparando, listo, entregado, cancelado)
@@ -36,6 +40,7 @@
     •	total
 
 **6. DetallePedido**
+
     •	id_detalle (PK)
     •	id_pedido (FK → Pedido)
     •	id_producto (FK → Producto)
@@ -44,6 +49,7 @@
     •	subtotal
 
 **7. Cliente**
+
     •	id_cliente (PK)
     •	nombre
     •	telefono
@@ -55,6 +61,7 @@
     •	activo (bool)
 
 **8. Empleado**
+
     •	id_empleado (PK)
     •	nombre
     •	dni
@@ -67,6 +74,7 @@
     •	activo (bool)
 
 **9. Reserva**
+
     •	id_reserva (PK)
     •	fecha_hora
     •	id_cliente (FK → Cliente)
@@ -75,12 +83,14 @@
     •	estado (confirmada, cancelada, atendida)
 
 **10. Mesa**
+
     •	id_mesa (PK)
     •	numero
     •	capacidad
     •	estado_actual (libre, ocupada, reservada)
 
 **11. Pago**
+
     •	id_pago (PK)
     •	id_pedido (FK → Pedido)
     •	monto_total
@@ -90,6 +100,7 @@
     •	impuestos
 
 **12. CuponConsumo**
+
     •	id_cupon (PK)
     •	id_cliente (FK → Cliente)
     •	codigo
@@ -99,6 +110,7 @@
     •	usado (bool)
 
 **13. MovimientoInventario (opcional pero recomendado)**
+
     •	id_movimiento (PK)
     •	id_ingrediente (FK → Ingrediente)
     •	tipo (entrada, salida)
@@ -108,6 +120,7 @@
     •	registrado_por (FK → Empleado)
 
 **14. Calificación del cliente**
+
     •	id_calificacion (PK)
     •	id_cliente
     •	id_eficacia
