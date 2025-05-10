@@ -1,131 +1,109 @@
 ***ENTIDADES PRINCIPALES***
-1. **Producto**
-    
-    - id_producto (PK)
+1. Producto
+    •	id_producto (PK)
+    •	nombre
+    •	descripcion
+    •	precio
+    •	id_categoria (FK → CategoríaProducto)
+    •	activo (bool)
+    •	foto_url
 
-    - nombre
+2. CategoríaProducto
+    •	id_categoria (PK)
+    •	nombre_categoria (Ej: bebidas, entradas, postres)
 
-    - descripcion
+3. Ingrediente
+    •	id_ingrediente (PK)
+    •	nombre
+    •	stock_actual
+    •	unidad_medida (g, ml, unidades, etc.)
+    •	activo (bool)
 
-    - precio
+4. ProductoIngrediente (Relación muchos a muchos)
+    •	id_producto (FK → Producto)
+    •	id_ingrediente (FK → Ingrediente)
+    •	cantidad_necesaria
 
-    - id_categoria (FK)
+5. Pedido
+    •	id_pedido (PK)
+    •	fecha_hora
+    •	estado (pendiente, preparando, listo, entregado, cancelado)
+    •	id_cliente (FK → Cliente, nullable)
+    •	id_empleado (FK → Empleado)
+    •	origen (mesa, mostrador, mensaje, llamada)
+    •	total
 
-    - activo (bool: si está disponible)
+6. DetallePedido
+    •	id_detalle (PK)
+    •	id_pedido (FK → Pedido)
+    •	id_producto (FK → Producto)
+    •	cantidad
+    •	precio_unitario
+    •	subtotal
 
-2. **CategoríaProducto**
-    
-    - id_categoria (PK)
+7. Cliente
+    •	id_cliente (PK)
+    •	nombre
+    •	telefono
+    •	direccion (nullable)
+    •	email (nullable)
+    •	fecha_nacimiento
+    •	dni
+    •	acumulado_consumo (para cupones/promos)
+    •	activo (bool)
 
-    - nombre_categoria (ej. bebidas, entradas, postres)
+8. Empleado
+    •	id_empleado (PK)
+    •	nombre
+    •	dni
+    •	fecha_nacimiento
+    •	direccion
+    •	rol (mesero, cocinero, administrador, cajero)
+    •	turno
+    •	usuario
+    •	contrasena_hash
+    •	activo (bool)
 
-3. **Ingrediente**
-    
-    - id_ingrediente (PK)
+9. Reserva
+    •	id_reserva (PK)
+    •	fecha_hora
+    •	id_cliente (FK → Cliente)
+    •	cantidad_personas
+    •	id_mesa (FK → Mesa)
+    •	estado (confirmada, cancelada, atendida)
 
-    - nombre
+10. Mesa
+    •	id_mesa (PK)
+    •	numero
+    •	capacidad
+    •	estado_actual (libre, ocupada, reservada)
 
-    - stock_actual
+11. Pago
+    •	id_pago (PK)
+    •	id_pedido (FK → Pedido)
+    •	monto_total
+    •	tipo_pago (efectivo, tarjeta, app, vale)
+    •	fecha_pago
+    •	descuento_aplicado (opcional)
+    •	impuestos
 
-    - unidad_medida (g, ml, unidades, etc.)
+12. CuponConsumo
+    •	id_cupon (PK)
+    •	id_cliente (FK → Cliente)
+    •	codigo
+    •	valor
+    •	fecha_emision
+    •	fecha_vencimiento
+    •	usado (bool)
 
-4. **ProductoIngrediente** *(relación muchos a muchos)*
-    
-    - id_producto (FK)
-
-    - id_ingrediente (FK)
-
-    - cantidad_necesaria
-
-5. **Pedido**
-    
-    - id_pedido (PK)
-
-    - fecha_hora
-
-    - estado (pendiente, preparando, listo, entregado, cancelado)
-
-    - id_cliente (FK, opcional)
-
-    - id_empleado (FK)
-
-    - total
-
-6. **DetallePedido**
-    
-    - id_detalle (PK)
-
-    - id_pedido (FK)
-
-    - id_producto (FK)
-
-    - cantidad
-
-    - precio_unitario
-
-    - subtotal
-
-7. **Cliente**
-    
-    - id_cliente (PK)
-
-    - nombre
-
-    - telefono
-
-    - direccion (si hay delivery)
-
-    - email (opcional)
-
-8. **Empleado**
-    
-    - id_empleado (PK)
-
-    - nombre
-
-    - rol (mesero, cocinero, administrador)
-
-    - usuario
-
-    - contraseña (encriptada)
-
-9. **Reserva**
-    
-    - id_reserva (PK)
-
-    - fecha_hora
-
-    - id_cliente (FK)
-
-    - cantidad_personas
-
-    - id_mesa (FK)
-
-    - estado (confirmada, cancelada)
-
-10. **Mesa**
-    
-    - id_mesa (PK)
-
-    - numero
-
-    - capacidad
-
-    - estado_actual (libre, ocupada, reservada)
-
-11. **Pago**
-    
-    - id_pago (PK)
-
-    - id_pedido (FK)
-
-    - monto_total
-
-    - tipo_pago (efectivo, tarjeta, etc.)
-
-    - propina
-
-    - fecha_pago
+13. MovimientoInventario (opcional pero recomendado)
+    •	id_movimiento (PK)
+    •	id_ingrediente (FK → Ingrediente)
+    •	tipo (entrada, salida)
+    •	cantidad
+    •	fecha
+    •	motivo (compra, preparación, ajuste, etc.)
+    •	registrado_por (FK → Empleado)
 
 
 ***RELACIONES IMPORTANTES***
