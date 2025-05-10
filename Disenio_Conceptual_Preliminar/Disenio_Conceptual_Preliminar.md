@@ -107,6 +107,10 @@
     •	motivo (compra, preparación, ajuste, etc.)
     •	registrado_por (FK → Empleado)
 
+**14. Calificación del cliente**
+    •	id_calificacion (PK)
+    •	id_cliente
+    •	id_eficacia
 
 ***RELACIONES IMPORTANTES***
     
