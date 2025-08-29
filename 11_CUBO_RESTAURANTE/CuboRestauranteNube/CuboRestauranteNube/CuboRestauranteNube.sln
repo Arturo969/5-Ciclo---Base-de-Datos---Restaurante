@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36203.30 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "CuboRestauranteNube", "CuboRestauranteNube.dwproj", "{08EBA02C-AD04-31E8-C62B-0BA0E45F57BC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{08EBA02C-AD04-31E8-C62B-0BA0E45F57BC}.Development|Default.ActiveCfg = Development
+		{08EBA02C-AD04-31E8-C62B-0BA0E45F57BC}.Development|Default.Build.0 = Development
+		{08EBA02C-AD04-31E8-C62B-0BA0E45F57BC}.Development|Default.Deploy.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BADF33DF-7BB4-4B6E-ABE0-DF46749887A6}
+	EndGlobalSection
+EndGlobal

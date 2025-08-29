@@ -78,9 +78,7 @@ CREATE TABLE GENERAL.Producto (
     EsPreparado BIT DEFAULT 1, -- Indica si el producto se prepara en cocina (BIT es el tipo de dato para boolean en SQL Server)
     CONSTRAINT FK_Producto_Categoria FOREIGN KEY (Id_Categoria) REFERENCES GENERAL.Categoria(Id_Categoria)
 );
-use RestauranteDBase
-DROP TABLE INVENTARIO.Inventario
-DROP TABLE GENERAL.ProductoIngrediente
+
 -- Tabla GENERAL.ProductoIngrediente
 CREATE TABLE GENERAL.ProductoIngrediente (
     Id_Producto INT NOT NULL,

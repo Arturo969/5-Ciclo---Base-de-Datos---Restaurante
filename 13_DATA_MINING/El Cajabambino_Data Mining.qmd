@@ -1,0 +1,183 @@
+---
+title: "El Cajabambino, Data Mining"
+author: "Valdiviezo Zavaleta, Jesus Arturo; Limay Rodriguez, Adriana Anthonela; Perez Briceño, Darick André; Llanos Cerquin, Melani Brizeth"
+format: html
+editor: visual
+---
+
+## Minería de datos para analizar y predecir las ventas por cliente usando Northwind
+
+### Objetivo
+
+Extraer y analizar datos de la base de datos `RestauranteMart` en `SQL Server` para construir un *modelo de regresión lineal*. El objetivo específico es predecir las *ganancias totales* (Ganancias) de un producto basándose en su `categoria`, el `nombre del mes` y el día de `la semana`.
+
+### Paquetes necesarios
+
+#### **Instalación de paquetes**:
+
+instal.packages( c("DBI", "odbc", "tidyverse", "caret", "ggplot2", "corrplot")
+
+)
+
+```{r}
+#install.packages(c("DBI", "odbc", "tidyverse", "caret", "ggplot2", "corrplot"))
+#161.132.54.162
+#estudiante
+#Adm1n.unc2025
+```
+
+```{r}
+library(odbc)
+library(DBI)
+library(tidyverse)
+library(caret)
+library(ggplot2)
+library(corrplot)
+```
+
+#### **Conexión a Base de datos**
+Conexión a SQL Server
+```{r echo=FALSE}
+conexion <- dbConnect(
+  odbc(),
+  Driver = "SQL Server", 
+  Server = "localhost",
+  Database = "RestauranteMart",
+  UID = "sa",
+  PWD = "123456",
+  Trusted_Connection = "Si")
+```
+
+#### **Realizar la consulta**
+```{r}
+consulta <- "
+SELECT  
+    p.nombreProducto,
+    p.categoria,
+    t.nombreMes,
+    t.diaSemana,
+    SUM(fv.numeroVentas) AS VentasTotales,
+    SUM(fv.margen) AS Ganancias
+FROM
+    FactVentas AS fv
+JOIN
+    DIM.Producto AS p ON fv.productokey = p.productokey
+JOIN
+    DIM.Tiempo AS t ON fv.tiempokey = t.tiempokey
+GROUP BY
+    p.nombreProducto,
+    p.categoria,
+    t.nombreMes,
+    t.diaSemana;
+"
+```
+#### **Crear variable para capturar los datos de la conexión**
+```{r}
+ganancias_productos <- dbGetQuery(conexion, consulta)
+```
+#### **Cerrar Conexión**
+```{r}
+dbDisconnect(conexion)
+```
+#### **Estructura de los datos**
+```{r}
+glimpse(ganancias_productos)
+```
+### **Análisis Exploratorio (EDA)**
+#### **Resumen General**
+```{r}
+summary(ganancias_productos)
+```
+
+#### **Filtrar top 10 clientes con más ventas**
+```{r}
+ganancias_productos %>%
+  group_by(nombreProducto) %>%
+  summarise(GananciaTotal = sum(Ganancias)) %>%
+  arrange(desc(GananciaTotal)) %>%
+  head(10)
+```
+#### **Visualización de datos**
+##### *Ventas por País*
+```{r}
+ggplot(ganancias_productos, aes(x = reorder(categoria, Ganancias), y = Ganancias)) +
+  geom_bar(stat = "identity", fill = "darkgreen") +
+  coord_flip() +
+  labs(title = "Ganancias Totales por Categoría de Producto", x = "Categoría", y = "Ganancias")
+```
+### **Preparación del modelo**
+#### **Convertir a factor**
+```{r}
+ganancias_productos$categoria <- as.factor(ganancias_productos$categoria)
+ganancias_productos$nombreMes <- as.factor(ganancias_productos$nombreMes)
+ganancias_productos$diaSemana <- as.factor(ganancias_productos$diaSemana)
+```
+#### **Dividir los datos en `Train` `Test`**
+```{r}
+set.seed(123)
+trainIndex <- createDataPartition(ganancias_productos$Ganancias, p = 0.7, list = FALSE)
+trainData <- ganancias_productos[trainIndex, ]
+testData <- ganancias_productos[-trainIndex, ]
+```
+#### **Modelo Predictivo: Regresión Lineal**
+```{r}
+modelo_reg <- train(
+  Ganancias ~ categoria + nombreMes + diaSemana,
+  data = trainData,
+  method = "lm"
+)
+```
+
+#### **Resumen del modelo**
+
+```{r}
+summary(modelo_reg)
+```
+#### **Evaluación del modelo**
+```{r}
+predicciones <- predict(modelo_reg, newdata = testData)
+```
+
+#### **Calcular `RMSE` y $R^2$**
+```{r}
+postResample(predicciones, testData$Ganancias)
+```
+#### **Comparación de datos Reales vs Predichos**
+##### *Resultados*
+
+```{r}
+resultados <- data.frame(Real = testData$Ganancias, Predichos = predicciones)
+```
+
+##### *Gráfica de Reales vs Predichos*
+```{r}
+ggplot(
+  resultados,
+  aes(x = Real, y = Predichos)
+) +
+  geom_point(color = "red") +
+  geom_abline(linetype = "dashed", color = "blue") +
+  labs(
+    title = "Ganancias Reales vs Ganancias Predichas", 
+    x = "Ganancias Reales", y = "Ganancias Predichas"
+  )
+```
+##### *Interpretación*
+El modelo de regresión lineal muestra que la categoría del producto, el mes y el día de la semana son factores significativos para predecir las ganancias, explicando aproximadamente el 41.75% de la variabilidad. Específicamente, las categorías Combinados, Fuentes y Platos Típicos son las más rentables, mientras que las ganancias son notablemente más altas en el mes de Febrero. Por otro lado, el modelo revela una disminución de las ganancias los martes y domingos, en comparación con otros días de la semana.
+
+El análisis de los coeficientes del modelo de regresión revela que la categoría del producto es el factor más influyente en las ganancias, con los Combinados y Fuentes mostrando los efectos positivos más fuertes y estadísticamente significativos (***). Las categorías Platos Típicos y Platos Criollos también contribuyen significativamente a las ganancias. En contraste, las categorías Entradas y Sopas no demuestran una influencia significativa, lo que sugiere que su rentabilidad es comparable a la de la categoría de referencia (probablemente Bebidas) en este modelo.
+
+En cuanto a los factores temporales, el modelo identifica patrones de rentabilidad en el tiempo. El mes de Febrero se asocia con un aumento significativo de las ganancias (*), lo que podría estar relacionado con eventos específicos de ese período. Por otro lado, los días de la semana marcan diferencias notables: el modelo predice que los martes (diaSemana2) y domingos (diaSemana7) tienen un impacto negativo y significativo en las ganancias, lo que indica que en estos días se genera menos rentabilidad en comparación con el día de la semana de referencia.
+
+A pesar de que el modelo en su conjunto es estadísticamente significativo (p-valor del F-statistic < 2.2e-16), su capacidad predictiva es moderada. El valor de R2 ajustado de 0.3837 indica que las variables consideradas (categoría, mes, día de la semana) explican aproximadamente el 38.4% de la variación en las ganancias. Esto implica que una parte considerable de la variación no es capturada por el modelo y podría deberse a otros factores no incluidos, como promociones, eventos especiales o la estacionalidad más allá del mes. Para mejorar la precisión predictiva, sería recomendable explorar la inclusión de nuevas variables o la implementación de modelos de aprendizaje automático más complejos.
+
+
+En resumen, este reporte es una herramienta estratégica para la gerencia. Permite identificar los productos más lucrativos y las tendencias temporales de la rentabilidad. La información obtenida puede guiar la toma de decisiones para optimizar el inventario, enfocar los esfuerzos de marketing en las categorías y períodos más rentables, y diseñar promociones específicas para los días de menor afluencia, con el objetivo de maximizar las ganancias del restaurante.
+
+
+```{r echo=FALSE}
+Sys.Date()
+```
+
+Derechos Reservados © Inteligencia de Negocios, El Sabor Cajabambino 
+

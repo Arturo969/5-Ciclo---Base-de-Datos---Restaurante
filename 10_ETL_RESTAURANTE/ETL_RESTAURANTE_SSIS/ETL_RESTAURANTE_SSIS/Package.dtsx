@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="21"
-  DTS:VersionGUID="{C8CC7290-2939-4E18-94F0-30E1AA38FBC2}">
+  DTS:VersionBuild="31"
+  DTS:VersionGUID="{A43E4F3B-93BA-4100-9037-EF7937D1B9CB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -25,11 +25,11 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=RestauranteDBasePrueba5m;Provider=MSOLEDBSQL.1;Application Name=SSIS-Package-{83F752A9-3524-4E07-8111-4A33481818D2}localhost.RestauranteDBasePrueba5m.sa;Auto Translate=False;">
+          DTS:ConnectionString="Data Source=ZAVALETA;User ID=sa;Initial Catalog=RestauranteDBasePrueba5m;Provider=MSOLEDBSQL.1;Auto Translate=False;Application Name=SSIS-Package-{83F752A9-3524-4E07-8111-4A33481818D2}localhost.RestauranteDBasePrueba5m.sa;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAoUo6C9Ru9Em8A+Nd14p5pwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACSKG1dZw0BaVN/gPZNjhIVHiUxBfJwH8IFaOT/m8fEIgAAAAAOgAAAAAIAACAAAABRA6Eo1qjNeB6AZsOvavzD8fMmNWi3q2QPf8KwrEf+mxAAAAA4FSQ3w6m8K7t4Apxmn5BmQAAAAD/6GU6Vm0+DSx1v7vJq7O8DlRB8zFW4vMOAjNOL6nNqpj47+Nc824P2SrX7ZnbDQ/QSgT8QLWvjhjQcdui44po</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAFKgnhjBfAU6TVsxXwK3BlQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADyPsTVVHisA5tiWmC+C2D3ZIkPqCvyLInYgBnYDmcGmwAAAAAOgAAAAAIAACAAAADPMVCJRO7krU43sMFK9YYGWbDYhF9UZam+ls2HAWeL8hAAAACp/EQTGP8OH0qk9WPo7+ViQAAAAMQBcYaBZEU0gtpcmYFlo9a3jpstBogDkg4kPmKhXWn7wh3gu5jYQ2q6h1Q69Pt1Or+nDqa23UNZ5D1vwt4NIuc</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -42,11 +42,11 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=RestauranteMart;Provider=MSOLEDBSQL.1;Application Name=SSIS-Package-{D0DF3436-A09F-4389-A342-9A1414775B64}localhost.RestauranteMart.sa;Auto Translate=False;">
+          DTS:ConnectionString="Data Source=161.132.54.162;User ID=estudiante;Initial Catalog=RestauranteMart;Provider=MSOLEDBSQL.1;Auto Translate=False;Application Name=SSIS-Package-{D0DF3436-A09F-4389-A342-9A1414775B64}localhost.RestauranteMart.sa;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAoUo6C9Ru9Em8A+Nd14p5pwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADLwbN425cLr8DhWVOGFmy87xcUy1x7m/z5Cx2L9tDCggAAAAAOgAAAAAIAACAAAAAYR0LMirzT94c2tVdV4r3ic2XpxHmZLXOCbniytYxR5RAAAAALJV7nmTWCZgA5MEnpxR1eQAAAADgTQiYAe8l57STAVbTqQkcQWsJ6uE7BzsLFuU2CSlpXaHB/xsCiOxP7fQprzK1/mFDDsAHG9k2eEYfHV9wdlnU</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAFKgnhjBfAU6TVsxXwK3BlQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABYFCRi+K7WZ8qCRM2yyNJ51pv3WKM0WE0UfOBVJgkKFAAAAAAOgAAAAAIAACAAAAAD56O37+GYVM+0XfzhRxii6RACfheVlf3X16fL1o4CnCAAAAA87OH2O1rmrRmzQ6OxlcjupHaRM+DrMXWkqBtvlgXuKkAAAAD1b7DTcw66JdVfWyV5VkQspV3g+90NUNUdHRynSuN+XvLwvrfWNUhFT7tOqPRv+WhmLVTLLJ6rTGXCVHNYlMxe</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -3080,7 +3080,7 @@ ORDER BY dt.tiempokey;</property>
     design-time-name="Package\POBLAR_DIM_PRODUCTO">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="168,41.6"
           Id="Package\POBLAR_DIM_PRODUCTO\Destino de OLE DB"
@@ -3108,7 +3108,9 @@ ORDER BY dt.tiempokey;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3139,7 +3141,7 @@ ORDER BY dt.tiempokey;</property>
     design-time-name="Package\POBLAR_DIM_TIEMPO">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="168,41.6"
           Id="Package\POBLAR_DIM_TIEMPO\Destino de OLE DB"
@@ -3167,7 +3169,9 @@ ORDER BY dt.tiempokey;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3206,33 +3210,21 @@ ORDER BY dt.tiempokey;</property>
         <NodeLayout
           Size="168,41.6"
           Id="Package\POBLAR_FAC_VENTAS\Destino de OLE DB"
-          TopLeft="574.999991431832,154.99999769032" />
+          TopLeft="544.999991878867,159.999997615814" />
         <EdgeLayout
           Id="Package\POBLAR_FAC_VENTAS.Paths[Salida de origen de OLE DB]"
-          TopLeft="622.599991938472,98.5999991506338">
+          TopLeft="625.799991908669,98.5999991506338">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="36.3999994933605,56.3999985396862"
+              EndConnector="0,61.3999984651803"
               Start="0,0"
-              End="36.3999994933605,48.8999985396862">
+              End="0,53.8999984651803">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24.1999992698431" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,24.1999992698431"
-                    Point2="0,28.1999992698431"
-                    Point3="4,28.1999992698431" />
-                  <mssgle:LineSegment
-                    End="32.3999994933605,28.1999992698431" />
-                  <mssgle:CubicBezierSegment
-                    Point1="32.3999994933605,28.1999992698431"
-                    Point2="36.3999994933605,28.1999992698431"
-                    Point3="36.3999994933605,32.1999992698431" />
-                  <mssgle:LineSegment
-                    End="36.3999994933605,48.8999985396862" />
+                    End="0,53.8999984651803" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

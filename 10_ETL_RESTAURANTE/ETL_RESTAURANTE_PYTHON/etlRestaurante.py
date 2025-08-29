@@ -9,7 +9,7 @@ print("------- CONEXIÓN A BASE DE DATOS TRANSACCIONAL ----------")
 
 # Conexión a la base de datos transaccional donde están los datos operativos
 try:
-    conn_nw = pyodbc.connect('DRIVER={SQL Server};SERVER=IDEAPAD\SQL;DATABASE=RestauranteDBasePrueba5m;UID=sa;PWD=gnab')
+    conn_nw = pyodbc.connect('DRIVER={SQL Server};SERVER=localhost\SQL;DATABASE=RestauranteDBasePrueba5m;UID=sa;PWD=sql123')
     cursor_nw = conn_nw.cursor()
     print('Conexión a RestauranteDBasePrueba5m correcta.')
 except Exception as e:
@@ -172,7 +172,7 @@ dtiempo = df5[['fecha', 'anio', 'trimestre', 'nombreTrimestre', 'mes', 'nombreMe
 # ------- CONEXIÓN A DATA WAREHOUSE ----------
 print("------- CONEXIÓN A BASE DE DATOS DIMENSIONAL ----------")
 try:
-    conn_dw = pyodbc.connect('DRIVER={SQL Server};SERVER=IDEAPAD\SQL;DATABASE=RestauranteMart;UID=sa;PWD=gnab')
+    conn_dw = pyodbc.connect('DRIVER={SQL Server};SERVER=localhost\SQL;DATABASE=RestauranteMart;UID=sa;PWD=sql123')
     cursor_dw = conn_dw.cursor()
     print('Conexión a RestauranteMart correcta.')
 except Exception as e:

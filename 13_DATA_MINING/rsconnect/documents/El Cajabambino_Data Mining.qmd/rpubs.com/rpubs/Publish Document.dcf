@@ -1,0 +1,10 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/1336367/c5e50b0c41a24ccca31473bd94604404
+bundleId: https://api.rpubs.com/api/v1/document/1336367/c5e50b0c41a24ccca31473bd94604404
+url: http://rpubs.com/ArturoZavaleta/1336367
+version: 1

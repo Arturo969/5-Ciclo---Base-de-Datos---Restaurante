@@ -2,13 +2,13 @@
 <BuildLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <ProjectInfo>
     <Name>ETL_RESTAURANTE_SSIS</Name>
-    <LastWriteTime>2025-07-04T04:50:41.8403778Z</LastWriteTime>
+    <LastWriteTime>2025-08-22T21:34:58.5014012Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>Package.dtsx</Name>
-      <LastWriteTime>2025-07-06T04:33:58.1229395Z</LastWriteTime>
+      <LastWriteTime>2025-08-22T21:42:06.3678899Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

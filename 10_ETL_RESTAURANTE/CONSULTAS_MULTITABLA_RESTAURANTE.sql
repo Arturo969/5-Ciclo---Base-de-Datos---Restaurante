@@ -58,21 +58,18 @@ ORDER BY 1
 WITH ProductoCosto AS (
    SELECT
         p.Id_Producto AS productoid,
-        p.EsPreparado, -- Incluimos EsPreparado para usarlo en la lógica condicional
-        -- Calcula el costo unitario del producto basado en si es preparado o no.
-        -- Para productos preparados (EsPreparado = 1): Suma el costo de sus ingredientes.
-        -- Para productos no preparados (EsPreparado = 0): Toma el costo directo del Inventario si el Id_Producto es también un Id_Item.
+        p.EsPreparado, 
         ISNULL(
             SUM(CASE
                 WHEN p.EsPreparado = 1 THEN ISNULL(inv_ing.CostoPorUnidad, 0) * ISNULL(pg_ing.Cantidad, 0)
-                ELSE 0 -- No suma costos de ingredientes para productos no preparados
+                ELSE 0 
             END),
             0
         ) AS CostoCalculadoIngredientes,
         ISNULL(
             MAX(CASE
                 WHEN p.EsPreparado = 0 THEN ISNULL(inv_direct.CostoPorUnidad, 0)
-                ELSE 0 -- No toma costo directo para productos preparados
+                ELSE 0 
             END),
             0
         ) AS CostoDirectoProducto
@@ -112,7 +109,6 @@ SELECT
     ) AS margen
 FROM [RestauranteDBasePrueba5m].[TRANSACCION].[DetallePedido] dp
 INNER JOIN [RestauranteDBasePrueba5m].[GENERAL].[Producto] p ON dp.Id_Producto = p.Id_Producto
--- **CORRECCIÓN:** Añadir JOIN a la tabla Categoria para obtener el nombre de la categoría
 INNER JOIN [RestauranteDBasePrueba5m].[GENERAL].[Categoria] cat ON p.Id_Categoria = cat.Id_Categoria
 INNER JOIN [RestauranteDBasePrueba5m].[TRANSACCION].[Pedido] pe ON dp.Id_Pedido = pe.Id_Pedido
 LEFT JOIN ProductoCosto pc ON dp.Id_Producto = pc.productoid
@@ -155,3 +151,16 @@ DBCC CHECKIDENT('DIM.Producto', RESEED, 0);
 DELETE FROM DIM.Tiempo;
 DBCC CHECKIDENT('DIM.Tiempo', RESEED, 0);
 [RestauranteDBasePrueba5m][RestauranteMart]
+
+DELETE FROM FactVentas;
+DBCC CHECKIDENT('FactVentas', RESEED, 0);
+DELETE FROM DIM.Cliente;
+DBCC CHECKIDENT('RestauranteMart.DIM.Cliente', RESEED, 0);
+DELETE FROM DIM.Mesa;
+DBCC CHECKIDENT('RestauranteMart.DIM.Mesa', RESEED, 0);
+DELETE FROM DIM.Empleado;
+DBCC CHECKIDENT('RestauranteMart.DIM.Empleado', RESEED, 0);
+DELETE FROM DIM.Producto;
+DBCC CHECKIDENT('RestauranteMart.DIM.Producto', RESEED, 0);
+DELETE FROM DIM.Tiempo;
+DBCC CHECKIDENT('RestauranteMart.DIM.Tiempo', RESEED, 0);
